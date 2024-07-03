@@ -150,7 +150,18 @@ body{
     gap: 20px;
     width: 330px;
     overflow-x: scroll;
-    scrollbar-width: none;
+}
+.medium__gallery::-webkit-scrollbar{
+    width: 8px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.medium__gallery::-webkit-scrollbar:window-inactive{
+    display: none;
+}
+.medium__gallery::-webkit-scrollbar-thumb {
+    background-color: #09C;
+    border-radius: 6px;
 }
 
 .medium__gallery > article{
