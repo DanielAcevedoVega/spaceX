@@ -267,4 +267,8 @@ body{
 
 .select {
 }
-
+.information__buttom{
+    font-family: "Lato-SemiBold";
+    position: absolute;
+    bottom: 130px;
+}

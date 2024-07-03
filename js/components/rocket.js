@@ -163,7 +163,6 @@ export const informationContaineRocket2 = (res) =>{
 
 export const sectionInformationRocket = (res) =>{
     let [data] = res.docs
-    console.log(data.payload_weights)
     let plantilla = /*html*/`
     <article>
         <div>
