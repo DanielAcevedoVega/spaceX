@@ -3,7 +3,7 @@ import { getDataRocket } from "./module/app.js"
 
 
 let endpoint = 'rockets'
-let page = 2
+let page = 1
 
 let data = await getDataRocket(page, endpoint)
 

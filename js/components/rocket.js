@@ -20,12 +20,32 @@ export const sectionDescriptionRocekt = (res)=>{
             <strong>Rocket Country:</strong>
             <p>${data.country}</p>
         </div>
+    </article>
+    <article class="article__description">
+        <img src="storage/img/icon.svg">
+        <div class="description__div">
+            <strong>Cost per launch:</strong>
+            <p>$ ${data.cost_per_launch}</p>
+        </div>
+    </article>
+    <article class="article__description">
+        <img src="storage/img/icon.svg">
+        <div class="description__div">
+            <strong>Date of the first flight:</strong>
+            <p>${data.first_flight}</p>
+        </div>
+    </article>
+    <article class="article__description">
+        <img src="storage/img/icon.svg">
+        <div class="description__div">
+            <strong>Read more about the rocket:</strong>
+            <a href="${data.wikipedia}" target="_blank">Wikipedia</a>
+        </div>
     </article>`; 
 }
 
 export const galleryImageRocket = (res) =>{
     let [data] = res.docs
-    console.log(data.flickr_images)
     let articles = "";
     for(const image of data.flickr_images){
         articles += /*html*/`
