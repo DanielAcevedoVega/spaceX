@@ -90,3 +90,73 @@ export const graphicsRocket = (res)=>{
                     </div>
                 </div>`;
 } 
+
+export const informationContaineRocket = (res) =>{
+    let [data] = res.docs
+    return /*html*/`
+    <div id = "text__box">
+        <h3>Information rocket</h3>
+        <hr>
+        <div>
+            <article>
+                <p>Type</p>
+                <strong>${data.type}</strong>
+            </article>
+            <article>
+                <p>Rocket in service</p>
+                <strong>${(data.active == true) ? "Active" : "Low" }</strong>
+            </article>
+            <article>
+                <p>Number of stages</p>
+                <strong>${data.stages}</strong>
+            </article>
+            <article>
+                <p>Number of propellants</p>
+                <strong>${data.boosters}</strong>
+            </article>
+            <article>
+                <p>Landing legs</p>
+                <strong>${data.landing_legs.number}</strong>
+            </article>
+            <article>
+                <p>Leg material</p>
+                <strong>${(data.landing_legs.material != null) ? data.landing_legs.material : "" }</strong>
+            </article>
+        </div>
+    </div>`;
+}
+
+export const informationContaineRocket2 = (res) =>{
+    let [data] = res.docs
+    return /*html*/`
+    <div id = "text__box">  
+        <h3>Engine information</h3>
+        <hr>
+        <div>
+            <article>
+                <p>Type</p>
+                <strong>${data.engines.type} ${data.engines.version}</strong>
+            </article>
+            <article>
+                <p>Maximum power loss</p>
+                <strong>${(data.engines.engine_loss_max != null) ? data.engines.engine_loss_max : 0}</strong>
+            </article>
+            <article>
+                <p>Engine availability</p>
+                <strong>${(data.engines.layout != null) ? data.engines.layout : ""}</strong>
+            </article>
+            <article>
+                <p>Number of engines</p>
+                <strong>${data.engines.number}</strong>
+            </article>
+            <article>
+                <p>Stage 1 fuel</p>
+                <strong>${data.engines.propellant_1}</strong>
+            </article>
+            <article>
+                <p>Stage 2 fuel</p>
+                <strong>${data.engines.propellant_2}</strong>
+            </article>
+        </div>
+    </div>`;
+}
