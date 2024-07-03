@@ -198,7 +198,6 @@ body{
 
   .section__information > article {
     display: flex;
-    justify-content: center;
     gap: 30px;
 
   }

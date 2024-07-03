@@ -25,7 +25,7 @@ export const sectionDescriptionRocekt = (res)=>{
         <img src="storage/img/icon.svg">
         <div class="description__div">
             <strong>Cost per launch:</strong>
-            <p>$ ${data.cost_per_launch}</p>
+            <p>$ ${new Intl.NumberFormat().format(data.cost_per_launch)}</p>
         </div>
     </article>
     <article class="article__description">
@@ -67,8 +67,8 @@ export const graphicsRocket = (res)=>{
         <div>
             <strong>Atmospheric acceleration</strong>
             <p>${porcentaje1} % </p>
-            <p>${data.engines.thrust_sea_level.kN} kN</p>
-            <p>${data.engines.thrust_sea_level.lbf} Lbf</p>
+            <p>${new Intl.NumberFormat().format(data.engines.thrust_sea_level.kN)} kN</p>
+            <p>${new Intl.NumberFormat().format(data.engines.thrust_sea_level.lbf)} Lbf</p>
         </div>
     </div>
     <div class="progress__bar" style="background: 
@@ -77,8 +77,8 @@ export const graphicsRocket = (res)=>{
                     <div>
                         <strong>Speed in space</strong>
                         <p>${porcentaje2} % </p>
-                        <p>${data.engines.thrust_vacuum.kN} kN</p>
-                        <p>${data.engines.thrust_vacuum.lbf} Lbf</p>
+                        <p>${new Intl.NumberFormat().format(data.engines.thrust_vacuum.kN)} kN</p>
+                        <p>${new Intl.NumberFormat().format(data.engines.thrust_vacuum.lbf)} Lbf</p>
                     </div>
                 </div>
     <div class="progress__bar" style="background: 
@@ -159,4 +159,86 @@ export const informationContaineRocket2 = (res) =>{
             </article>
         </div>
     </div>`;
+}
+
+export const sectionInformationRocket = (res) =>{
+    let [data] = res.docs
+    console.log(data.payload_weights)
+    let plantilla = /*html*/`
+    <article>
+        <div>
+            <strong>Rocket Weight: </strong>
+            <progress value="${data.mass.kg}" max="${data.mass.lb}"></progress>
+        </div>
+        <div>
+            <div>
+                <p>${new Intl.NumberFormat().format(data.mass.kg)} kg</p>
+                <p>${new Intl.NumberFormat().format(data.mass.lb)} lb</p>
+            </div>
+        </div>
+    </article>
+    <article>
+        <div>
+            <strong>Rocket Height: </strong>
+            <progress value="${data.height.meters}" max="${data.height.feet}"></progress>
+        </div>
+        <div>
+            <div>
+                <p>${new Intl.NumberFormat().format(data.height.meters)} M</p>
+                <p>${new Intl.NumberFormat().format(data.height.feet)} F</p>
+            </div>
+        </div>
+    </article>
+    <article>
+        <div>
+            <strong>Rocket Diameter: </strong>
+            <progress value="${data.diameter.meters}" max="${data.diameter.feet}"></progress>
+        </div>
+        <div>
+            <div>
+                <p>${new Intl.NumberFormat().format(data.diameter.meters)} M</p>
+                <p>${new Intl.NumberFormat().format(data.diameter.feet)} F</p>
+            </div>
+        </div>
+    </article>
+    <article>
+        <div>
+            <strong>Height rocket shield: </strong>
+            <progress value="${data.second_stage.payloads.composite_fairing.height.meters}" max="${data.second_stage.payloads.composite_fairing.height.feet}"></progress>
+        </div>
+        <div>
+            <div>
+                <p>${new Intl.NumberFormat().format(data.second_stage.payloads.composite_fairing.height.meters)} M</p>
+                <p>${new Intl.NumberFormat().format(data.second_stage.payloads.composite_fairing.height.feet)} F</p>
+            </div>
+        </div>
+    </article>
+    <article>
+    <div>
+        <strong>Diameter Rocket Shield: </strong>
+        <progress value="${data.second_stage.payloads.composite_fairing.diameter.meters}" max="${data.second_stage.payloads.composite_fairing.diameter.feet}"></progress>
+    </div>
+    <div>
+        <div>
+            <p>${new Intl.NumberFormat().format(data.second_stage.payloads.composite_fairing.diameter.meters)} M</p>
+            <p>${new Intl.NumberFormat().format(data.second_stage.payloads.composite_fairing.diameter.feet)} F</p>
+        </div>
+    </div>
+    </article>`;
+    for(const value of data.payload_weights){
+        plantilla += /*html*/`
+        <article>
+            <div>
+                <strong>${value.name}: </strong>
+                <progress value="${value.kg}" max="${value.lb}"></progress>
+            </div>
+            <div>
+                <div>
+                    <p>${new Intl.NumberFormat().format(value.kg)} kg</p>
+                    <p>${new Intl.NumberFormat().format(value.lb)} lb</p>
+                </div>
+            </div>
+        </article>`;
+    }
+    return plantilla
 }
