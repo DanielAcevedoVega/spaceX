@@ -1,6 +1,7 @@
 import { galleryImageCapsule, informationContaineCapsule, informationContaineCapsule2, sectionDescriptionCapsule, sectionInformationCapsule, titleCapsule } from "./components/capsule.js";
 import { galleryImageCompany, informationContaineCompany, informationContaineCompany2, sectionDescriptionCompany, sectionInformationCompany, titleCompany } from "./components/company.js";
 import { informationContaineCore, informationContaineCore2, sectionDescriptionCore, sectionInformationCore, titleCore } from "./components/cores.js";
+import { galleryImageCrew, informationContaineCrew, informationContaineCrew2, sectionDescriptionCrew, sectionInformationCrew, titleCrew } from "./components/crew.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -37,6 +38,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 break;
             case 'cores':
                 updateCoresContent(data);
+                break;
+            case 'crew':
+                updateCrewContent(data);
                 break;
                 
         }
@@ -88,6 +92,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation.innerHTML = informationContaineCore(data);
         containerInformation2.innerHTML = informationContaineCore2(data);
         sectionInfromation.innerHTML = sectionInformationCore(data);
+    }
+    const updateCrewContent = (data) =>{
+        title.innerHTML = titleCrew(data)
+        sectionDescription.innerHTML = sectionDescriptionCrew(data);
+        galleryImage.innerHTML = galleryImageCrew(data);
+        graphics.innerHTML = '';
+        containerInformation.innerHTML = informationContaineCrew(data);
+        containerInformation2.innerHTML = informationContaineCrew2(data);
+        sectionInfromation.innerHTML = sectionInformationCrew(data);
     }
 
     const createPageLink = (page, currentPage) => {
