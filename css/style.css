@@ -186,7 +186,6 @@ body{
     height: 80%;
     padding-left: 0px;
     overflow-y: scroll;
-    scrollbar-width: none;
   }
   .section__information article div strong{
     font-family: "Lato-SemiBold";
@@ -208,7 +207,18 @@ body{
     justify-content: end;
     position: relative;
   }
-
+  .section__information::-webkit-scrollbar{
+        width: 8px;
+        background-color: #ffffff;
+        border-radius: 20px;
+    }
+    .section__information::-webkit-scrollbar:window-inactive{
+        display: none;
+    }
+    .section__information::-webkit-scrollbar-thumb {
+        background-color: #09C;
+        border-radius: 6px;
+    }
   .section__information > article > div > strong{
     width: 160px;
   }
