@@ -270,7 +270,7 @@ body{
 .information__buttom{
     font-family: "Lato-SemiBold";
     position: absolute;
-    bottom: 93px;
+    bottom: 100px;
     right: 150px;
     display: flex;
     justify-content: space-between;
@@ -282,4 +282,8 @@ body{
 }
 .information__buttom a:hover{
     color: #191c48;
+}
+.disabled{
+    pointer-events: none;
+    cursor: default;
 }
