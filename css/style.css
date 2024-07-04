@@ -270,8 +270,8 @@ body{
 .information__buttom{
     font-family: "Lato-SemiBold";
     position: absolute;
-    bottom: 130px;
-    right: 200px;
+    bottom: 93px;
+    right: 150px;
     display: flex;
     justify-content: space-between;
     gap: 20px;

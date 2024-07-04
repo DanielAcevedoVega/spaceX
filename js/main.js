@@ -2,6 +2,7 @@ import { galleryImageCapsule, informationContaineCapsule, informationContaineCap
 import { galleryImageCompany, informationContaineCompany, informationContaineCompany2, sectionDescriptionCompany, sectionInformationCompany, titleCompany } from "./components/company.js";
 import { informationContaineCore, informationContaineCore2, sectionDescriptionCore, sectionInformationCore, titleCore } from "./components/cores.js";
 import { galleryImageCrew, informationContaineCrew, informationContaineCrew2, sectionDescriptionCrew, sectionInformationCrew, titleCrew } from "./components/crew.js";
+import { galleryImageDragon, informationContaineDragon, informationContaineDragon2, sectionDescriptionDragon, sectionInformationDragon, titleDragon } from "./components/dragons.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -42,6 +43,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             case 'crew':
                 updateCrewContent(data);
                 break;
+            case 'dragons':
+            updateDragonContent(data);
+            break;
                 
         }
         // title.innerHTML = titleRocket(data);
@@ -101,6 +105,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation.innerHTML = informationContaineCrew(data);
         containerInformation2.innerHTML = informationContaineCrew2(data);
         sectionInfromation.innerHTML = sectionInformationCrew(data);
+    }
+    const updateDragonContent = (data) =>{
+        title.innerHTML = titleDragon(data)
+        sectionDescription.innerHTML = sectionDescriptionDragon(data);
+        galleryImage.innerHTML = galleryImageDragon(data);
+        graphics.innerHTML = '';
+        containerInformation.innerHTML = informationContaineDragon(data);
+        containerInformation2.innerHTML = informationContaineDragon2(data);
+        sectionInfromation.innerHTML = sectionInformationDragon(data);
     }
 
     const createPageLink = (page, currentPage) => {
