@@ -1,3 +1,4 @@
+import { galleryImageCapsule, informationContaineCapsule, informationContaineCapsule2, sectionDescriptionCapsule, sectionInformationCapsule, titleCapsule } from "./components/capsule.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             case 'rockets':
                 updateRocketContent(data);
                 break;
+            case 'capsules':
+                updateCapsuleContent(data);
         }
         // title.innerHTML = titleRocket(data);
         // sectionDescription.innerHTML = sectionDescriptionRocekt(data);
@@ -48,6 +51,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation.innerHTML = informationContaineRocket(data);
         containerInformation2.innerHTML = informationContaineRocket2(data);
         sectionInfromation.innerHTML = sectionInformationRocket(data);
+    };
+    const updateCapsuleContent = (data) => {
+        title.innerHTML = titleCapsule(data);
+        sectionDescription.innerHTML = sectionDescriptionCapsule(data);
+        galleryImage.innerHTML = galleryImageCapsule(data);
+        graphics.innerHTML = '';
+        containerInformation.innerHTML = informationContaineCapsule(data);
+        containerInformation2.innerHTML = informationContaineCapsule2(data);
+        sectionInfromation.innerHTML = sectionInformationCapsule(data);
     };
 
     const createPageLink = (page, currentPage) => {
