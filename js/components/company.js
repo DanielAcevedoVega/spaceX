@@ -38,7 +38,7 @@ export const sectionDescriptionCompany = (res)=>{
 export const galleryImageCompany = () =>{
     return  /*html*/`
     <article>
-        <img src="https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2023/05/0/0/spacex.png?ve=1&tl=1" referrerpolicy="no-referrer">
+        <img src="https://www.nasa.gov/wp-content/uploads/2015/11/39a_aerial1.jpg" referrerpolicy="no-referrer">
     </article>`;
 }
 

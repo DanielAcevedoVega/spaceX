@@ -1,5 +1,6 @@
 import { galleryImageCapsule, informationContaineCapsule, informationContaineCapsule2, sectionDescriptionCapsule, sectionInformationCapsule, titleCapsule } from "./components/capsule.js";
 import { galleryImageCompany, informationContaineCompany, informationContaineCompany2, sectionDescriptionCompany, sectionInformationCompany, titleCompany } from "./components/company.js";
+import { informationContaineCore, informationContaineCore2, sectionDescriptionCore, sectionInformationCore, titleCore } from "./components/cores.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -30,8 +31,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 break;
             case 'capsules':
                 updateCapsuleContent(data);
+                break;
             case 'company':
-                updateCompanyContent(data)
+                updateCompanyContent(data);
+                break;
+            case 'cores':
+                updateCoresContent(data);
+                break;
+                
         }
         // title.innerHTML = titleRocket(data);
         // sectionDescription.innerHTML = sectionDescriptionRocekt(data);
@@ -72,6 +79,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation.innerHTML = informationContaineCompany(data);
         containerInformation2.innerHTML = informationContaineCompany2(data);
         sectionInfromation.innerHTML = sectionInformationCompany(data);
+    }
+    const updateCoresContent = (data) =>{
+        title.innerHTML = titleCore(data)
+        sectionDescription.innerHTML = sectionDescriptionCore(data);
+        galleryImage.innerHTML = '';
+        graphics.innerHTML = '';
+        containerInformation.innerHTML = informationContaineCore(data);
+        containerInformation2.innerHTML = informationContaineCore2(data);
+        sectionInfromation.innerHTML = sectionInformationCore(data);
     }
 
     const createPageLink = (page, currentPage) => {
