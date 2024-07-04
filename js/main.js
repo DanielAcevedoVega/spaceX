@@ -4,6 +4,7 @@ import { informationContaineCore, informationContaineCore2, sectionDescriptionCo
 import { galleryImageCrew, informationContaineCrew, informationContaineCrew2, sectionDescriptionCrew, sectionInformationCrew, titleCrew } from "./components/crew.js";
 import { galleryImageDragon, informationContaineDragon, informationContaineDragon2, sectionDescriptionDragon, sectionInformationDragon, titleDragon } from "./components/dragons.js";
 import { galleryImageHistory, sectionDescriptionHistory, titleHistory } from "./components/history.js";
+import { galleryImageLandpads, graphicsLandpads, informationContaineLandpads, informationContaineLandpads2, sectionDescriptionLandpads, sectionInformationLandpads, titleLandpads } from "./components/landpads.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -50,6 +51,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             case 'history':
                 updateHistoryContent(data);
                 break;
+            case 'landpads':
+                updateLandpadsContent(data);
+                break;
+
                 
         }
         // title.innerHTML = titleRocket(data);
@@ -127,6 +132,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation.innerHTML = '';
         containerInformation2.innerHTML = '';
         sectionInfromation.innerHTML = '';
+    }
+    const updateLandpadsContent = (data) => {
+        title.innerHTML = titleLandpads(data);
+        sectionDescription.innerHTML = sectionDescriptionLandpads(data);
+        galleryImage.innerHTML = galleryImageLandpads(data);
+        graphics.innerHTML = graphicsLandpads(data);
+        containerInformation.innerHTML = informationContaineLandpads(data);
+        containerInformation2.innerHTML = informationContaineLandpads2(data);
+        sectionInfromation.innerHTML = sectionInformationLandpads(data);
     }
 
     const createPageLink = (page, currentPage) => {
