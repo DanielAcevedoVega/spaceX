@@ -1,4 +1,5 @@
 import { galleryImageCapsule, informationContaineCapsule, informationContaineCapsule2, sectionDescriptionCapsule, sectionInformationCapsule, titleCapsule } from "./components/capsule.js";
+import { galleryImageCompany, informationContaineCompany, informationContaineCompany2, sectionDescriptionCompany, sectionInformationCompany, titleCompany } from "./components/company.js";
 import { galleryImageRocket, graphicsRocket, informationContaineRocket, informationContaineRocket2, sectionDescriptionRocekt, sectionInformationRocket, titleRocket } from "./components/rocket.js";
 import { getAllData} from "./module/app.js"
 
@@ -29,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 break;
             case 'capsules':
                 updateCapsuleContent(data);
+            case 'company':
+                updateCompanyContent(data)
         }
         // title.innerHTML = titleRocket(data);
         // sectionDescription.innerHTML = sectionDescriptionRocekt(data);
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // containerInformation2.innerHTML = informationContaineRocket2(data);
         // sectionInfromation.innerHTML = sectionInformationRocket(data);
 
-        
+
         totalPages = data.totalPages;
         updatePagination(page);
     };
@@ -61,6 +64,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         containerInformation2.innerHTML = informationContaineCapsule2(data);
         sectionInfromation.innerHTML = sectionInformationCapsule(data);
     };
+    const updateCompanyContent = (data) =>{
+        title.innerHTML = titleCompany(data)
+        sectionDescription.innerHTML = sectionDescriptionCompany(data);
+        galleryImage.innerHTML = galleryImageCompany(data);
+        graphics.innerHTML = '';
+        containerInformation.innerHTML = informationContaineCompany(data);
+        containerInformation2.innerHTML = informationContaineCompany2(data);
+        sectionInfromation.innerHTML = sectionInformationCompany(data);
+    }
 
     const createPageLink = (page, currentPage) => {
         const pageLink = document.createElement('a');
