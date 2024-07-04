@@ -2,12 +2,6 @@ import { galleryImageRocket, graphicsRocket, informationContaineRocket, informat
 import { getAllData} from "./module/app.js"
 
 
-
-let page = 1
-
-
-
-
 let title = document.querySelector('.header');
 let sectionDescription = document.querySelector('.section__description');
 let galleryImage = document.querySelector('.medium__gallery');
@@ -17,32 +11,119 @@ let containerInformation2 = document.querySelector('.container2');
 let sectionInfromation = document.querySelector('.section__information');
 
 
-// title.innerHTML = titleRocket(data)
+document.addEventListener('DOMContentLoaded', async () => {
+    let currentPage = 1;  
+    let totalPages = 1;   
+    const pageSize = 4;   
 
-// sectionDescription.innerHTML = sectionDescriptionRocekt(data)
+    let endpoint = 'rockets';  
 
-// galleryImage.innerHTML = galleryImageRocket(data)
+    const updateContent = async (page) => {
+        const data = await getAllData(page, endpoint);
+        console.log(data);
 
-// graphics.innerHTML =  graphicsRocket(data)
+        switch(endpoint){
+            case 'rockets':
+                updateRocketContent(data);
+                break;
+        }
+        // title.innerHTML = titleRocket(data);
+        // sectionDescription.innerHTML = sectionDescriptionRocekt(data);
+        // galleryImage.innerHTML = galleryImageRocket(data);
+        // graphics.innerHTML = graphicsRocket(data);
+        // containerInformation.innerHTML = informationContaineRocket(data);
+        // containerInformation2.innerHTML = informationContaineRocket2(data);
+        // sectionInfromation.innerHTML = sectionInformationRocket(data);
 
-// containerInformation.innerHTML = informationContaineRocket(data)
-
-// containerInformation2.innerHTML = informationContaineRocket2(data)
-
-// sectionInfromation.innerHTML =  sectionInformationRocket(data)
-
-document.addEventListener('DOMContentLoaded', () => {
-    const handleClick = async(e) => {
-        e.preventDefault();
-        const itemId = e.target.closest('li').id;
-        const page = 1
-        console.log(await getAllData(page, itemId))
+        
+        totalPages = data.totalPages;
+        updatePagination(page);
     };
-    const footerLinks = document.querySelectorAll('footer .select');
 
+    const updateRocketContent = (data) => {
+        title.innerHTML = titleRocket(data);
+        sectionDescription.innerHTML = sectionDescriptionRocekt(data);
+        galleryImage.innerHTML = galleryImageRocket(data);
+        graphics.innerHTML = graphicsRocket(data);
+        containerInformation.innerHTML = informationContaineRocket(data);
+        containerInformation2.innerHTML = informationContaineRocket2(data);
+        sectionInfromation.innerHTML = sectionInformationRocket(data);
+    };
+
+    const createPageLink = (page, currentPage) => {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.textContent = page;
+        if (page === currentPage) {
+            pageLink.classList.add('active');
+        }
+        pageLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            currentPage = page;
+            await updateContent(currentPage);
+        });
+        return pageLink;
+    };
+
+    const updatePagination = (currentPage) => {
+        const paginationContainer = document.querySelector('#pagination');
+        paginationContainer.innerHTML = '';
+    
+        if(totalPages > 1){
+            const prevButton = document.createElement('a');
+            prevButton.href = '#';
+            prevButton.textContent = 'Prev';
+            prevButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                } else {
+                    currentPage = totalPages; 
+                }
+                updatePagination(currentPage);
+                await updateContent(currentPage);
+            });
+            paginationContainer.appendChild(prevButton);
+
+            const startPage = Math.max(1, currentPage - Math.floor(pageSize / 2));
+            const endPage = Math.min(totalPages, startPage + pageSize - 1);
+        
+            for (let i = startPage; i <= endPage; i++) {
+                paginationContainer.appendChild(createPageLink(i, currentPage));
+            }
+
+            const nextButton = document.createElement('a');
+            nextButton.href = '#';
+            nextButton.textContent = 'Next';
+            nextButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                } else {
+                    currentPage = 1; 
+                }
+                updatePagination(currentPage);
+                await updateContent(currentPage);
+            });
+            
+            paginationContainer.appendChild(nextButton);
+        }
+    };
+
+    await updateContent(currentPage);
+    const footerLinks = document.querySelectorAll('footer .select');
     footerLinks.forEach(link => {
-        link.addEventListener('click', handleClick);
+        link.addEventListener('click', async (e) => {
+            e.preventDefault();
+            endpoint = e.target.closest('li').id;
+            currentPage = 1;  
+            await updateContent(currentPage);
+        });
     });
 });
+
+
+
+
 
 

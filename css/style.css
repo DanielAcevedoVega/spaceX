@@ -271,4 +271,15 @@ body{
     font-family: "Lato-SemiBold";
     position: absolute;
     bottom: 130px;
+    right: 200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    
+}
+.information__buttom a{
+    text-decoration: none;
+}
+.information__buttom a:hover{
+    color: #191c48;
 }
